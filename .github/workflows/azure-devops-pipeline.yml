@@ -1,0 +1,24 @@
+name: CI/CD Pipeline for .NET App
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Trigger Azure DevOps Pipeline
+      run: |
+        curl -u user:"${{ secrets.AZURE_DEVOPS_PAT }}" \
+          -X POST "https://dev.azure.com/${{ secrets.AZURE_DEVOPS_ORG }}/${{ secrets.AZURE_DEVOPS_PROJECT }}/_apis/pipelines/${{ secrets.AZURE_DEVOPS_PIPELINE_ID }}/runs?api-version=7.1-preview.1" \
+          -H "Content-Type: application/json" \
+          -d '{"resources": {"repositories": {"self": {"refName": "refs/heads/main"}}}}'
