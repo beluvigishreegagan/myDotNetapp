@@ -1,25 +1,21 @@
-name: Azure DevOps Pipeline Trigger
+name: PipelineWorkflow
 
 on:
   push:
     branches:
       - main
   pull_request:
-    branches:
+    branches: 
       - main
 
 jobs:
-  build:
-    name: Azure DevOps Pipeline
-    runs-on: windows-latest
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Run Azure Pipeline
-        uses: Azure/pipelines@v1
-        with:
-          azure-devops-project-url: 'https://dev.azure.com/BeluvigiShreegagana'
-          azure-pipeline-name: 'terraform-task'
-          azure-devops-token: 'ArEt5vZD974jd69uG21j5tHrM0WwYROzgHbQuJn7JgfCptajaCwiJQQJ99BBACAAAAA5M6VBAAASAZDO3QWl'
+    build:
+        name: Azure Pipeline
+        runs-on: ubuntu-latest
+        steps:
+        - name: Azure Pipelines Action
+          uses: Azure/pipelines@v1
+          with:
+            azure-devops-project-url: https://dev.azure.com/BeluvigiShreegagana
+            azure-pipeline-name: 'terraform-task'
+            azure-devops-token: 'ArEt5vZD974jd69uG21j5tHrM0WwYROzgHbQuJn7JgfCptajaCwiJQQJ99BBACAAAAA5M6VBAAASAZDO3QWl'
