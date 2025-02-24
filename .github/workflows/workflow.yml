@@ -14,15 +14,11 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      # - name: Checkout Repository
-      #   uses: actions/checkout@v4
+      
 
       - name: Run Azure Pipeline
         uses: Azure/pipelines@v1
         with:
           azure-devops-project-url: 'https://dev.azure.com/BeluvigiShreegagana'
           azure-pipeline-name: 'terraform-task'
-          azure-devops-token: ${{ env.AZURE_DEVOPS_TOKEN }}
-        env:
-          AZURE_DEVOPS_TOKEN: ${{ secrets.AZURE_DEVOPS_TOKEN }}
-
+          azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
