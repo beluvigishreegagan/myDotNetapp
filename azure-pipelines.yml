@@ -43,9 +43,9 @@ steps:
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
-    publishLocation: 'Container'
-- task: DownloadBuildArtifacts@1
-  inputs:
-    buildType: 'current'
-    downloadType: 'single'
-    downloadPath: '$(System.ArtifactsDirectory)'
+#     publishLocation: 'Container'
+# - task: DownloadBuildArtifacts@1
+#   inputs:
+#     buildType: 'current'
+#     downloadType: 'single'
+#     downloadPath: '$(System.ArtifactsDirectory)'
