@@ -22,4 +22,4 @@ jobs:
         with:
           azure-devops-project-url: 'https://dev.azure.com/BeluvigiShreegagana'
           azure-pipeline-name: 'terraform-task'
-          azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
+          azure-devops-token: 'ArEt5vZD974jd69uG21j5tHrM0WwYROzgHbQuJn7JgfCptajaCwiJQQJ99BBACAAAAA5M6VBAAASAZDO3QWl'
