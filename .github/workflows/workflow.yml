@@ -1,21 +1,30 @@
-name: PipelineWorkflow
+name: Azure DevOps Pipeline Trigger
 
 on:
   push:
     branches:
       - main
   pull_request:
-    branches: 
+    branches:
       - main
 
 jobs:
-    build:
-        name: Azure Pipeline
-        runs-on: windows-latest
-        steps:
-        - name: Azure Pipelines Action
-          uses: Azure/pipelines@v1
-          with:
-            azure-devops-project-url: https://dev.azure.com/BeluvigiShreegagana/terraform-task
-            azure-pipeline-name: 'beluvigishreegagan.myDotNetapp'
-            azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
+  build:
+    name: Azure DevOps Pipeline
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Debug Token Length
+        run: echo "Token Length: ${#AZURE_DEVOPS_TOKEN}"
+        env:
+          AZURE_DEVOPS_TOKEN: ${{ secrets.AZURE_DEVOPS_TOKEN }}
+
+      - name: Run Azure DevOps Pipeline
+        uses: Azure/pipelines@v1
+        with:
+          azure-devops-project-url: 'https://dev.azure.com/BeluvigiShreegagana'
+          azure-pipeline-name: 'terraform-task'
+          azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
