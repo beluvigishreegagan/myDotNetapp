@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'ubuntu-latest'
 
 variables:
   solution: '**/*.sln'
@@ -35,17 +35,13 @@ steps:
 # - task: WhiteSource@21
 #   inputs:
 #     cwd: '$(System.DefaultWorkingDirectory)'
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'build'
-
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-#     publishLocation: 'Container'
-# - task: DownloadBuildArtifacts@1
+# - task: DotNetCoreCLI@2
 #   inputs:
-#     buildType: 'current'
-#     downloadType: 'single'
-#     downloadPath: '$(System.ArtifactsDirectory)'
+#     command: 'build'
+
+# - task: PublishBuildArtifacts@1
+#   inputs:
+#     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+#     ArtifactName: 'drop'
+#     publishLocation: 'Container'
+
